@@ -3,7 +3,7 @@ nlsy_cols <- c("glasses", "eyesight", "sleep_wkdy", "sleep_wknd",
 							 "income", "res_1980", "res_2002", "age_bir")
 
 library(tidyverse)
-setwd("~/Documents/Teaching/Emory/epi590r-inclass/data/raw/")
+setwd("/Users/akbarre/Desktop/Emory/FALL 24/EPI 590R/epi590r/data/raw/") #("~/Documents/Teaching/Emory/epi590r-inclass/data/raw/")
 nlsy <- read_csv("nlsy.csv",
 								 na = c("-1", "-2", "-3", "-4", "-5", "-998"),
 								 skip = 1, col_names = nlsy_cols)
