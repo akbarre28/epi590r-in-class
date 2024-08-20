@@ -44,7 +44,7 @@ nrow(nlsy)
 #Choose a table to label and caption, and then write a sentence that cross-references it (e.g., Table 1 shows the descriptive statistics)
 
 #| label: tbl-one
-#| tbl-cap: "Wonderful"
+#| tbl-cap: "First Table"
 tbl_summary(
   nlsy,
   by = sex_cat,
@@ -81,7 +81,7 @@ tbl_summary(
               eyesight_cat, glasses, age_bir))
 ```
 
-## Exercise 2.3 
+## Exercise 2.3 (Part 1)
 ```{r}
 #Add a chunk where you calculate the mean number of hours of sleep on weekends (you can use the mean() function). Have the code print that output.
 # Now, store that value as an object in the chunk. Add it as inline text.
@@ -89,7 +89,7 @@ tbl_summary(
 
 
 #| output: true
-avg_sleepwknd<-mean(nlsy$sleep_wknd, na.rm = TRUE)
+avg_sleepwknd <- mean(nlsy$sleep_wknd, na.rm = TRUE)
 ```
 
 -   Participants' mean number of hours of sleep on weekends is `r avg_sleepwknd`. 
@@ -100,8 +100,59 @@ avg_sleepwknd<-mean(nlsy$sleep_wknd, na.rm = TRUE)
 #Change the means to medians and re-render.
 
 #| output: true
-med_sleepwknd<-median(nlsy$sleep_wknd, na.rm = TRUE)
+med_sleepwknd <- median(nlsy$sleep_wknd, na.rm = TRUE)
 ```
 
 -   Participants' median number of hours of sleep on weekends is `r med_sleepwknd`. 
 -   I am calculating the median number of hours of sleep on weekends for participants inline, which is `r median(nlsy$sleep_wknd, na.rm = TRUE)`. 
+
+
+## Exercise 2.3 (Part 2)
+
+```{r}
+#Add a chunk with the table1 table from the slides. Practice extracting the output using inline_text() as in the slides.
+
+#| label: tbl-descr
+#| tbl-cap: "Descriptive statistics"
+#| output-location: slide
+table1 <- tbl_summary(
+  nlsy,
+  by = sex_cat,
+  include = c(sex_cat, race_eth_cat, region_cat,
+              eyesight_cat, glasses, age_bir)) |> 
+  add_overall(last = TRUE)
+table1
+
+inline_text(table1, variable = "glasses", column = "stat_0",
+            pattern = "{n}/{N} ({p}%)")
+
+```
+
+```{r}
+#Edit or create a new table that has the median hours of sleep on weekends in it (in the overall sample).
+#From that table, pull out the that value and include in the text using inline_text().
+
+#| label: tbl-two
+#| tbl-cap: "Descriptive statistics"
+#| output-location: slide
+table2 <- tbl_summary(
+  nlsy,
+  by = sex_cat,
+  include = c(sex_cat, race_eth_cat, region_cat,
+              eyesight_cat, glasses, age_bir, sleep_wknd))|> 
+  add_overall(last = TRUE)
+table2
+
+med_hrs_sleep <- inline_text(table2, variable = "sleep_wknd", column = "stat_0") 
+
+medsleepwknd_f <- inline_text(table2, variable = "sleep_wknd", 
+                         column = "stat_2")
+medsleepwknd_m <- inline_text(table2, variable = "sleep_wknd", 
+                         column = "stat_1")
+```
+
+The overall median hours of sleep on weekends and IQR are (`r med_hrs_sleep`). <br>
+
+Females and male participants have the same median hours of sleep on weekends (`r medsleepwknd_f`) vs. (`r medsleepwknd_m`).
+
+
