@@ -143,4 +143,5 @@ tbl_regression(
 
 
 
+
 #Make a table comparing the log-binomial and the log-Poisson results.
