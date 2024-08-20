@@ -93,7 +93,7 @@ avg_sleepwknd<-mean(nlsy$sleep_wknd, na.rm = TRUE)
 ```
 
 -   Participants' mean number of hours of sleep on weekends is `r avg_sleepwknd`. 
--   I am calculating the mean number of hours of sleep on weekends for participants, which is `r mean(nlsy$sleep_wknd, na.rm = TRUE)`. <br>
+-   I am calculating the mean number of hours of sleep on weekends for participants inline, which is `r mean(nlsy$sleep_wknd, na.rm = TRUE)`. <br>
 
 
 ```{r}
@@ -104,4 +104,4 @@ med_sleepwknd<-median(nlsy$sleep_wknd, na.rm = TRUE)
 ```
 
 -   Participants' median number of hours of sleep on weekends is `r med_sleepwknd`. 
--   I am calculating the median number of hours of sleep on weekends for participants, which is `r median(nlsy$sleep_wknd, na.rm = TRUE)`. 
+-   I am calculating the median number of hours of sleep on weekends for participants inline, which is `r median(nlsy$sleep_wknd, na.rm = TRUE)`. 
