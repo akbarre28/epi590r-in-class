@@ -41,14 +41,19 @@ nrow(nlsy)
 # Customization of `tbl_summary()`
 
 ```{r}
+#Choose a table to label and caption, and then write a sentence that cross-references it (e.g., Table 1 shows the descriptive statistics)
 
-
+#| label: tbl-one
+#| tbl-cap: "Wonderful"
 tbl_summary(
   nlsy,
   by = sex_cat,
   include = c(sex_cat, race_eth_cat, region_cat,
               eyesight_cat, glasses, age_bir))
 ```
+
+@tbl-one shows the descriptive statistics.
+
 
 ```{r}
 tbl_summary(
@@ -75,3 +80,28 @@ tbl_summary(
   include = c(sex_cat, race_eth_cat, region_cat,
               eyesight_cat, glasses, age_bir))
 ```
+
+## Exercise 2.3 
+```{r}
+#Add a chunk where you calculate the mean number of hours of sleep on weekends (you can use the mean() function). Have the code print that output.
+# Now, store that value as an object in the chunk. Add it as inline text.
+# Finally, calculate the statistic directly as inline text.
+
+
+#| output: true
+avg_sleepwknd<-mean(nlsy$sleep_wknd, na.rm = TRUE)
+```
+
+-   Participants' mean number of hours of sleep on weekends is `r avg_sleepwknd`. 
+-   I am calculating the mean number of hours of sleep on weekends for participants, which is `r mean(nlsy$sleep_wknd, na.rm = TRUE)`. <br>
+
+
+```{r}
+#Change the means to medians and re-render.
+
+#| output: true
+med_sleepwknd<-median(nlsy$sleep_wknd, na.rm = TRUE)
+```
+
+-   Participants' median number of hours of sleep on weekends is `r med_sleepwknd`. 
+-   I am calculating the median number of hours of sleep on weekends for participants, which is `r median(nlsy$sleep_wknd, na.rm = TRUE)`. 
