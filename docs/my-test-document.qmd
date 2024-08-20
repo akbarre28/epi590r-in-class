@@ -5,9 +5,33 @@ format: html
 editor: visual
 ---
 
+# Heading Level 1
+
+Italicized text is the *cat's meow*.
+
 ## Quarto
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+### Heading level 3
+
+Try to put a blank line before...
+
+#### Heading level 4
+
+...and after a heading.
+
+##### Heading level 5
+
+<p>I really like using Markdown.</p>
+
+<p>I think I'll use it to format all of my documents from now on.</p>
+
+###### Line Breaks
+
+To create a line break or new line (<br>), end a line with two or more spaces, and then type return.
+
+<p>This is the first line.<br> And this is the second line.</p>
 
 ## Running Code
 
@@ -25,3 +49,16 @@ You can add options to executable code like this
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
+
+## Lists
+
+To create an unordered list, add dashes (-), asterisks (\*), or plus signs (+) in front of line items. Indent one or more items to create a nested list.
+
+-   First item
+-   Second item
+-   Third item
+-   Fourth item
+
+## To render as pdf
+
+You want to do "quarto install tinytex" in the R Terminal.
