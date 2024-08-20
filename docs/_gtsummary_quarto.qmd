@@ -1,9 +1,8 @@
 ---
 title: "gtsummary in quarto"
 format:
-  html:
+  html: #change this to pdf if want to render as such need "quarto install tinytex" in terminal first
     theme: quartz
-    
 execute: 
   eval: true
   echo: false
@@ -11,6 +10,7 @@ execute:
   
 ---
 
+We’re using some data from the National Longitudinal Survey of Youth 1979, a cohort of American young adults aged 14-22 at enrollment in 1979. They continue to be followed to this day, and there is a wealth of publicly available data online. I’ve downloaded the answers to a survey question about whether respondents wear glasses, a scale about their eyesight with glasses, their (NLSY-assigned 😒) race/ethnicity, their sex (presumably at birth, but unclear), their family’s income in 1979, and their age at the birth of their first child.
 
 ```{r}
 #| output: false #makes the code show but not the results 
@@ -32,12 +32,13 @@ nlsy <- read_csv(here::here("data", "raw", "nlsy.csv"),
 
 ```
 
+This is the number of rows in the table:
 ```{r}
+#| label: Outline label for this chunk
 nrow(nlsy)
 ```
 
 # Customization of `tbl_summary()`
-
 
 ```{r}
 
@@ -74,4 +75,3 @@ tbl_summary(
   include = c(sex_cat, race_eth_cat, region_cat,
               eyesight_cat, glasses, age_bir))
 ```
-    
